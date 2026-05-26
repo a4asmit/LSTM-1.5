@@ -37,3 +37,18 @@ class LSTMClassifier(nn.Module):
     
 model = LSTMClassifier(vocab_size=10000, embed_dim=128, hidden_size=256, num_layers=2, num_classes=2)
 print(f"Parameters: {sum(p.numel() for p in model.parameters()):,}")
+
+
+gru = nn.GRU(input_size=10, hidden_size=64, num_layers=2, batch_first=True, dropout=0.3)
+
+x = torch.randn(32, 50, 10)
+h0 = torch.zeros(2, 32, 64)
+
+output, hn = gru(x, h0)
+
+print(output.shape)
+print(hn.shape)
+
+print(f"GRU parameter {sum(p.numels() for p in gru.parameters())}")
+lstm2 = nn.LSTM(10, 64, 2, batch_first = True)
+print(f"LSTM parameter {sum(p.numels() for p in lstm2.parameters())}")
