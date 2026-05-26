@@ -49,6 +49,7 @@ output, hn = gru(x, h0)
 print(output.shape)
 print(hn.shape)
 
-print(f"GRU parameter {sum(p.numels() for p in gru.parameters())}")
+print(f"GRU parameter {sum(p.numel() for p in gru.parameters())}")
 lstm2 = nn.LSTM(10, 64, 2, batch_first = True)
-print(f"LSTM parameter {sum(p.numels() for p in lstm2.parameters())}")
+print(f"LSTM parameter {sum(p.numel() for p in lstm2.parameters())}")
+
