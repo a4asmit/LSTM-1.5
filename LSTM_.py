@@ -53,3 +53,14 @@ print(f"GRU parameter {sum(p.numel() for p in gru.parameters())}")
 lstm2 = nn.LSTM(10, 64, 2, batch_first = True)
 print(f"LSTM parameter {sum(p.numel() for p in lstm2.parameters())}")
 
+bilstm = nn.LSTM(input_size=10, hidden_size=64, num_layers=1, batch_first=True, bidirectional=True)
+
+x = torch.randn(32, 50, 10)
+
+output, (hn, cn) = bilstm(x)
+
+print(output.shape)
+
+forward_last = output[:, -1, :64]
+backward_last = output[:, 0, 64:]
+combined = torch.cat([forward_last, backward_last], dim=1)
