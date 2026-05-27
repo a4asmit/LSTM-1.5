@@ -187,3 +187,6 @@ print("Training complete!")
 # Save model
 torch.save(model.state_dict(), 'sentiment_lstm.pth')
 print("Model saved to sentiment_lstm.pth")
+
+
+YEs
